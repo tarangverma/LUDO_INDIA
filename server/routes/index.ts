@@ -42,7 +42,7 @@ export function createServer(externalServer?: http.Server) {
   });
 
   // Initialize room store (Redis if REDIS_URL set)
-  const store = new RoomStore(process.env.REDIS_URL, {
+  const store = new RoomStore(process.env.UPSTASH_REDIS_REST_URL, {
     ttlSeconds: Number(process.env.ROOM_TTL_SECONDS || 3600),
   });
 
