@@ -52,6 +52,11 @@ export function setupSocketHandlers(io: Server, socket: Socket, store: RoomStore
 
       if (room.game) {
         room.game.tokens[playerId] = Array(gameEngine.TOKENS_PER_PLAYER).fill(-1);
+        room.game.players.push({
+          id: player.id,
+          name: player.name,
+          color: player.color as gameEngine.PlayerColor,
+        });
       }
 
       if (!room.game && room.players.length >= 2) {
